@@ -14,7 +14,7 @@ export function readPosts(){
     }
 }
 
-export function readOnePost(postId){
+export function fetchPostById(){
     const post=ref({})
 
     const getPost = async (postId) =>{
@@ -25,5 +25,19 @@ export function readOnePost(postId){
     return {
         post, 
         getPost
+    }
+}
+
+export function fetchUserById(){
+    const user=ref({})
+
+    const getUser = async (userId) =>{
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        user.value = await response.json()    
+    }
+
+    return {
+        user, 
+        getUser
     }
 }

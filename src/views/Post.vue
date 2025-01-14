@@ -8,7 +8,7 @@
 <script setup>
 import {computed} from 'vue'
 import {useRoute } from 'vue-router'
-import {readOnePost} from "../composables/readPosts.js"
+import {fetchPostById,fetchUserById} from "../composables/readPosts.js"
 
 const route=useRoute()
 
@@ -16,16 +16,11 @@ const postId = computed(() => {
   return route.params.id
 })
 
-console.log(postId.value);
+const { post, getPost } = fetchPostById();
+const { user, getUser } = fetchUserById();
 
-const {selectedPost, getPost}=readOnePost(postId)
+console.log(post.value.userId)
 
-const post = {
-  title:
-    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
-};
-const user = {
-  name: "Leanne Graham",
-};
+getPost(postId.value); 
+getUser(post.value.userId); 
 </script>
