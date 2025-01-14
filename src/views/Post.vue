@@ -6,6 +6,20 @@
   </div>
 </template>
 <script setup>
+import {computed} from 'vue'
+import {useRoute } from 'vue-router'
+import {readOnePost} from "../composables/readPosts.js"
+
+const route=useRoute()
+
+const postId = computed(() => {
+  return route.params.id
+})
+
+console.log(postId.value);
+
+const {selectedPost, getPost}=readOnePost(postId)
+
 const post = {
   title:
     "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",

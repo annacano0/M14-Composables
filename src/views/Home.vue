@@ -5,7 +5,7 @@
 </template>
 <script setup>
 import PostCard from "../components/PostCard.vue";
-import readPosts from "../composables/readPosts.js"
+import {readPosts} from "../composables/readPosts.js"
 
 const {posts, readAll} = readPosts();
 

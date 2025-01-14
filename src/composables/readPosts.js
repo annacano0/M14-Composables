@@ -1,6 +1,6 @@
 import {ref} from 'vue'
 
-export default function readPosts(){
+export function readPosts(){
     const posts=ref([]); //create reactive array to save posts
     
     const readAll = async () =>{
@@ -11,5 +11,19 @@ export default function readPosts(){
     return {
         posts, 
         readAll
+    }
+}
+
+export function readOnePost(postId){
+    const post=ref({})
+
+    const getPost = async (postId) =>{
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+        post.value = await response.json()    
+    }
+
+    return {
+        post, 
+        getPost
     }
 }
