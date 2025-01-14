@@ -5,9 +5,9 @@
 </template>
 <script setup>
 import PostCard from "../components/PostCard.vue";
-import {readPosts} from "../composables/readPosts.js"
+import {fetchPosts} from "../composables/fetchData.js"
 
-const {posts, readAll} = readPosts();
+const {posts, getPosts} = fetchPosts();
 
-readAll()
+getPosts()
 </script>

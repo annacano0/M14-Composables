@@ -8,7 +8,7 @@
 <script setup>
 import {computed, watch} from 'vue'
 import {useRoute } from 'vue-router'
-import {fetchPostById,fetchUserById} from "../composables/readPosts.js"
+import {fetchPostById,fetchUserById} from "../composables/fetchData.js"
 
 const route=useRoute()
 
