@@ -6,7 +6,7 @@
   </div>
 </template>
 <script setup>
-import {computed} from 'vue'
+import {computed, watch} from 'vue'
 import {useRoute } from 'vue-router'
 import {fetchPostById,fetchUserById} from "../composables/readPosts.js"
 
@@ -19,8 +19,13 @@ const postId = computed(() => {
 const { post, getPost } = fetchPostById();
 const { user, getUser } = fetchUserById();
 
-console.log(post.value.userId)
 
 getPost(postId.value); 
-getUser(post.value.userId); 
+
+
+watch(post, (newPost) => {
+  if (newPost.userId) {
+    getUser(newPost.userId)
+  }
+})
 </script>
