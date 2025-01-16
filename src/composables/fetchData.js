@@ -2,31 +2,26 @@ import {ref} from 'vue'
 
 export function fetchPosts(){
     const posts=ref([]); 
+    const post=ref()
     
     const getPosts = async () =>{
         const response = await fetch('https://jsonplaceholder.typicode.com/posts')
         posts.value = await response.json()
     }
 
-    return {
-        posts, 
-        getPosts
-    }
-}
-
-export function fetchPostById(){
-    const post=ref({})
-
     const getPost = async (postId) =>{
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+        const response = await fetch (`https://jsonplaceholder.typicode.com/posts/${postId}`)
         post.value = await response.json()    
     }
 
     return {
         post, 
-        getPost
+        getPost,
+        posts, 
+        getPosts
     }
 }
+
 
 export function fetchUserById(){
     const user=ref({})
@@ -39,19 +34,5 @@ export function fetchUserById(){
     return {
         user, 
         getUser
-    }
-}
-//TODO: finish this implementation :) 
-export function fetchData(url){
-    const data = ref([]); 
-    
-    const getData = async () => {
-        const response = await fetch(url)
-        data.value = await response.json()    
-    }
-
-    return {
-        data, 
-        getData
     }
 }

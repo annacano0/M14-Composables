@@ -8,7 +8,7 @@
 <script setup>
 import {computed, watch} from 'vue'
 import {useRoute } from 'vue-router'
-import {fetchPostById,fetchUserById} from "../composables/fetchData.js"
+import {fetchUserById, fetchPosts} from "../composables/fetchData.js"
 
 const route=useRoute()
 
@@ -16,12 +16,11 @@ const postId = computed(() => {
   return route.params.id
 })
 
-const { post, getPost } = fetchPostById();
+const { post, getPost, posts, getPosts } = fetchPosts();
 const { user, getUser } = fetchUserById();
 
 
 getPost(postId.value); 
-
 
 watch(post, (newPost) => {
   if (newPost.userId) {

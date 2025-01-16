@@ -7,7 +7,7 @@
 import PostCard from "../components/PostCard.vue";
 import {fetchPosts} from "../composables/fetchData.js"
 
-const {posts, getPosts} = fetchPosts();
+const {post, fetchPost, posts, getPosts} = fetchPosts();
 
 getPosts()
 </script>
